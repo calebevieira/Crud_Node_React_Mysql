@@ -25,16 +25,16 @@ function App() {
 
   const getUsers = async () => {
     try {
-      const res = await axios.get("http://localhost:8800");
-      setUsers(res.data.sort((a, b) => (a.nome > b.nome ? 1 : -1)));
+      const res = await axios.get("https://api-one-pink.vercel.app/api/users");
+      setUsers(res.data);
     } catch (error) {
-      toast.error(error);
+      toast.error(error.message);
     }
   };
 
   useEffect(() => {
     getUsers();
-  }, [setUsers]);
+  }, []);
 
   return (
     <>
